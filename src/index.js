@@ -35,6 +35,7 @@ class ReactNativeModal extends Component {
     backdropTransitionInTiming: PropTypes.number,
     backdropTransitionOutTiming: PropTypes.number,
     children: PropTypes.node.isRequired,
+    childrenPosition: PropTypes.node.isRequired,
     deviceHeight: PropTypes.number,
     deviceWidth: PropTypes.number,
     isVisible: PropTypes.bool.isRequired,
@@ -539,6 +540,7 @@ class ReactNativeModal extends Component {
       backdropTransitionInTiming,
       backdropTransitionOutTiming,
       children,
+      childrenPosition,
       deviceHeight: deviceHeightProp,
       deviceWidth: deviceWidthProp,
       isVisible,
@@ -602,6 +604,7 @@ class ReactNativeModal extends Component {
           style={[
             styles.backdrop,
             {
+              zIndex: -100,
               backgroundColor: this.state.showContent
                 ? backdropColor
                 : 'transparent',
@@ -636,6 +639,7 @@ class ReactNativeModal extends Component {
         onRequestClose={onBackButtonPress}
         {...otherProps}
       >
+        {childrenPosition}
         {hasBackdrop && backdrop}
 
         {avoidKeyboard && (
